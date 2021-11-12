@@ -8,6 +8,7 @@ var
 res_ini, res_fin, equivalente, guardado: real
 repete, cont:inteiro
 uso_guard:caractere
+opcao:inteiro
 
 procedimento cabecalho()
 
@@ -86,7 +87,7 @@ procedimento res_serie(variavel:real)
 
 var
 
-opcao:inteiro
+//opcao:inteiro
 
 inicio
 
@@ -94,7 +95,9 @@ se (uso_guard = "USO") entao
    equivalente <- res_ini+res_fin
    res_ini <- equivalente
    uso_guard <-  ""
-   tipo_res()
+   escreval("Pronto! Resistencia equivalente atualizada.")
+   escreval("Agora é com voce.")
+   exibe_opc()
 fimse  //Tratamento de erro para evitar que a ressistencia equivalente esteja
 //errada, quando se usar uma valor em meoria
 repita
@@ -109,18 +112,20 @@ cont <- cont+1
 
 equivalente <- res_ini+res_fin
 
-escreval()
-escreval("Deseja continuar: ")
-escreval()
-escrevaL("1 - Parar programa e exibir ressitencia equivalente")
-escreval("2 - Continuar calculado ressistencia equivalente")
-escreval("3 - Guardar valor  na memoria para uso futuro e zerar ressistencias")
-escreval("4 - Usar valor guaradado na memoria")
-escreval()
-repita
-   escreva("Opcao: ")
-   leia(opcao)
-   escreval()
+exibe_opc()
+
+//escreval()
+//escreval("Deseja continuar: ")
+//escreval()
+//escrevaL("1 - Parar programa e exibir ressitencia equivalente")
+//escreval("2 - Continuar calculado ressistencia equivalente")
+//escreval("3 - Guardar valor  na memoria para uso futuro e zerar ressistencias")
+//escreval("4 - Usar valor guaradado na memoria")
+//escreval()
+//repita
+//   escreva("Opcao: ")
+//   leia(opcao)
+//   escreval()
 
    se ((opcao <> 1) e (opcao <> 2) e (opcao <> 3) e (opcao <> 4)) entao
       escreval("Opcao invalida! Tente novamente.")
@@ -154,6 +159,8 @@ senao
                escreval("Para isso informe se o valor armazenado em memoria,")
                escreval("e que sera usado agora, esta associado em serie")
                escreval("ou em paralelo com o circuito")
+               escreval("Logo apos atualizar a resistencia equivalente")
+               escreval("o progrma ira continuar normalmente.")
                tipo_res()
             senao
                escreval("Voce nao possui valor guardado em memoria!")
@@ -172,19 +179,22 @@ senao
 fimse
 fimprocedimento
 
-procedimento res_paralelo(variavel2:real)
+procedimento res_paralelo(variavel2:real) //Procedimento para calcular a
+// resistencia equivalente em paralelo.
 var
-opcao:inteiro
+//opcao:inteiro
 inicio
 
-se (uso_guard = "USO") entao
+se (uso_guard = "USO") entao //Procediemnto que verifica a necessidade de atuali
+//zacao da resistencia equivalnete.
    equivalente <- 1/((1/res_ini)+(1/res_fin))
    res_ini <- equivalente
    uso_guard <-  ""
-   tipo_res()
+   escreval("Pronto! Resistencia equivalente atualizada.")
+   escreval("Agora é com voce.")
+   exibe_opc()
 fimse
 
-//equivalente <- 1/((1/res_ini)+(1/res_fin))
 escreval()
 repita
    escreva("Informe o valor da ressistencia",cont," em paralelo: ")
@@ -199,18 +209,20 @@ cont <- cont+1
 
 equivalente <- 1/((1/res_ini)+(1/res_fin))
 
-escreval()
-escreval("Deseja continuar: ")
-escreval()
-escreval("1 - Parar programa e exibir ressitencia equivalente")
-escreval("2 - Continuar calculado ressistencia equivalente")
-escreval("3 - Guardar valor  na memoria para uso futuro e zerar ressistencias")
-escreval("4 - Usar valor guaradado na memoria")
-escreval()
-repita
-   escreva("Opcao: ")
-   leia(opcao)
-   escreval()
+exibe_opc()
+//escreval()
+//escreval("Deseja continuar: ")
+//escreval()
+//escreval("1 - Parar programa e exibir ressitencia equivalente")
+//escreval("2 - Continuar calculado ressistencia equivalente")
+//escreval("3 - Guardar valor  na memoria para uso futuro e zerar ressistencias")
+//escreval("4 - Usar valor guaradado na memoria")
+//escreval()
+//repita
+//   escreva("Opcao: ")
+//   leia(opcao)
+//   escreval()
+
 
    se ((opcao <> 1) e (opcao <> 2) e (opcao <> 3) e (opcao <> 4)) entao
       escreval("Opcao invalida! Tente novamente.")
@@ -245,6 +257,8 @@ senao
                escreval("Para isso informe se o valor armazenado em memoria,")
                escreval("e que sera usado agora, esta associado em serie")
                escreval("ou em paralelo com o circuito")
+               escreval("Logo apos atualizar a resistencia equivalente")
+               escreval("o progrma ira continuar normalmente.")
                tipo_res()
             senao
                escreval("Voce nao possui valor guardado em memoria!")
@@ -282,6 +296,22 @@ repita
       cont <- cont + 1
 ate (cont = 22)
 
+fimprocedimento
+
+procedimento exibe_opc()
+inicio
+escreval()
+escreval("Deseja continuar: ")
+escreval()
+escreval("1 - Parar programa e exibir ressitencia equivalente")
+escreval("2 - Continuar calculado ressistencia equivalente")
+escreval("3 - Guardar valor  na memoria para uso futuro e zerar ressistencias")
+escreval("4 - Usar valor guaradado na memoria")
+escreval()
+repita
+   escreva("Opcao: ")
+   leia(opcao)
+   escreval()
 fimprocedimento
 
 inicio
