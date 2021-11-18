@@ -79,7 +79,7 @@ senao
 
    fimse
 fimse
-limpa_tela()
+
 fimprocedimento   // Procedimento para informar ao programa o tipo de ligacao
 // dos ressistores
 
@@ -100,6 +100,11 @@ se (uso_guard = "USO") entao
    exibe_opc()
 fimse  //Tratamento de erro para evitar que a ressistencia equivalente esteja
 //errada, quando se usar uma valor em meoria
+
+se (repete = 1) entao
+   interrompa
+fimse
+
 repita
    escreva("Informe o valor da ressistencia",cont," em serie: ")
    leia(res_fin)
@@ -133,6 +138,10 @@ escreval("Agora é com voce.")
 exibe_opc()
 fimse
 
+se (repete = 1) entao
+   interrompa
+fimse
+
 escreval()
 repita
 escreva("Informe o valor da ressistencia",cont," em paralelo: ")
@@ -157,19 +166,8 @@ escreval()
 escreval("A ressistencia equivalente é",equivalente)
 escreval()
 repete <- 1
+
 fimprocedimento // Exibe o valor da ressistencia equivalente
-
-procedimento limpa_tela()
-var
-cont:inteiro
-inicio
-cont <- 1
-repita
-escreval()
-cont <- cont + 1
-ate (cont = 22)
-
-fimprocedimento
 
 procedimento exibe_opc()
 inicio
@@ -188,7 +186,7 @@ leia(opcao)
 escreval()
 
 se ((opcao <> 1) e (opcao <> 2) e (opcao <> 3) e (opcao <> 4)) entao
-limpa_tela()
+limpatela()
 escreval("Opcao invalida! Tente novamente.")
 fimse
 ate ((opcao = 1) ou (opcao = 2) ou (opcao = 3) ou (opcao = 4))
@@ -196,12 +194,12 @@ se (opcao = 1) entao
 exibe_equivalente()
 senao
 se (opcao = 2) entao
-limpa_tela()
+limpatela()
 res_ini <- equivalente
 Tipo_res()
 senao
 se (opcao = 3) entao
-   limpa_tela()
+   limpatela()
    escreval("MEMORIA LIMPA")
    guardado <- equivalente
    equivalente <- 0
@@ -215,7 +213,7 @@ se (opcao = 3) entao
 senao
    se (opcao = 4) entao
       se (guardado <> 0) entao
-         limpa_tela()
+         limpatela()
          res_ini <- guardado
          res_fin <- equivalente
          uso_guard <- "USO"
@@ -228,7 +226,7 @@ senao
          escreval("o progrma ira continuar normalmente.")
          tipo_res()
       senao
-         limpa_tela()
+         limpatela()
          escreval("Voce nao possui valor guardado em memoria!")
          escreval()
          escreval("Por favor, tente novamente!")
