@@ -173,6 +173,7 @@ fimprocedimento
 
 procedimento exibe_opc()
 inicio
+
 escreval()
 escreval("Deseja continuar: ")
 escreval()
@@ -187,6 +188,7 @@ leia(opcao)
 escreval()
 
 se ((opcao <> 1) e (opcao <> 2) e (opcao <> 3) e (opcao <> 4)) entao
+limpa_tela()
 escreval("Opcao invalida! Tente novamente.")
 fimse
 ate ((opcao = 1) ou (opcao = 2) ou (opcao = 3) ou (opcao = 4))
@@ -194,10 +196,12 @@ se (opcao = 1) entao
 exibe_equivalente()
 senao
 se (opcao = 2) entao
+limpa_tela()
 res_ini <- equivalente
 Tipo_res()
 senao
 se (opcao = 3) entao
+   limpa_tela()
    escreval("MEMORIA LIMPA")
    guardado <- equivalente
    equivalente <- 0
@@ -211,6 +215,7 @@ se (opcao = 3) entao
 senao
    se (opcao = 4) entao
       se (guardado <> 0) entao
+         limpa_tela()
          res_ini <- guardado
          res_fin <- equivalente
          uso_guard <- "USO"
@@ -223,15 +228,12 @@ senao
          escreval("o progrma ira continuar normalmente.")
          tipo_res()
       senao
+         limpa_tela()
          escreval("Voce nao possui valor guardado em memoria!")
          escreval()
-         escreval("O último valor de ressistencia informado,", res_fin)
-         escreval("sera apagado!")
+         escreval("Por favor, tente novamente!")
          escreval()
-         escreval("Caso deseje reutilizalo informeo novamente")
-         escreval("no proximo passo")
-         escreval()
-         res_paralelo(res_ini)
+         exibe_opc()
       fimse
    fimse
 fimse
